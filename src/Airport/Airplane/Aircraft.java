@@ -80,17 +80,17 @@ public class Aircraft extends Subscriber{
 	}
 	
 	@Subscribe
-	public void recieve(EventHoldShort eventHoldShort) {
+	public void receive(EventHoldShort eventHoldShort) {
 		
 	}
 	
 	@Subscribe
-	public void recieve(EventLand eventLand) {
+	public void receive(EventLand eventLand) {
 		
 	}
 	
 	@Subscribe
-	public void recieve(EventTakeOff eventTakeOff) {
+	public void receive(EventTakeOff eventTakeOff) {
 		
 	}
 	

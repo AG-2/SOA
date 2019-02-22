@@ -2,7 +2,7 @@ package Airport.Events;
 
 import Airport.Airplane.Aircraft;
 
-public class Events implements IEvents{
+public class Events implements Airport.Events.IEvents {
     private Aircraft aircraft;
 
     Events(Aircraft aircraft)
