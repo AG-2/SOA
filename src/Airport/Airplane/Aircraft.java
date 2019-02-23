@@ -6,6 +6,7 @@ import Airport.Events.EventHoldShort;
 import Airport.Events.EventLand;
 import Airport.Events.EventTakeOff;
 import Airport.Events.EventTaxi;
+import jdk.jfr.Event;
 
 
 public class Aircraft extends Subscriber{
@@ -25,6 +26,12 @@ public class Aircraft extends Subscriber{
 		this.id = id;
 		this.location = location;
 		build();
+	}
+
+	public int getId() {
+
+		return id;
+
 	}
 	
 	public void build() {
@@ -69,7 +76,7 @@ public class Aircraft extends Subscriber{
 	}
 	
 	@Subscribe
-	public void recieve(EventTaxi eventTaxi) {
+	public void receive(EventTaxi eventTaxi) {
 		//fehlt noch location
 		if(Tower.locationTaken()) {
 			movetolocation();
@@ -98,4 +105,12 @@ public class Aircraft extends Subscriber{
 		System.out.println("Aircraft " + id + " moved from " + this.location.toString() + " to " + location.toString());
 		this.location = location;
 	}
+
+	private void writeEventLog(Event event, String s) {
+
+		writeEventLog(event, "");
+
+	}
+
+
 }
