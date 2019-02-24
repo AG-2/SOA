@@ -1,7 +1,8 @@
 package Airport;
 
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
 import Airport.Airplane.Aircraft;
-import Airport.Airplane.Location;
 import Airport.Airplane.Subscriber;
 import Airport.Events.EventHoldShort;
 import Airport.Events.EventTakeOff;
@@ -22,20 +23,20 @@ public class Tower implements ITower{
 		eventBus.unregister(subscriber);
 	}
 	
-	public void runwayclearedtoLand(Aircraft aircraft, Direction direction) {
-		eventBus.post(new EventTakeOff(aircraft, direction));
+	public void runwayclearedtoLand(Aircraft aircraft, Runway runway) {
+		eventBus.post(new EventTakeOff(aircraft, runway));
 	}
 
 	public void runwayclearedtoLand(String aircraft, String direction) {
-		runwayclearedtoLand(Airport.airport.getAircraft(aircraft), Direction.valueOf(Direction));
+		runwayclearedtoLand(Airport.airport.aircrafts.get(Airport.airport.aircrafts.indexOf(aircraft)), Runway.valueOf(direction));
 	}
 
-	public void runwayClearedToTakeoff(Aircraft aircraft, Direktion direction) {
-		eventBus.post(new EventTakeOff(aircraft, direction));
+	public void runwayClearedToTakeoff(Aircraft aircraft, Runway runway) {
+		eventBus.post(new EventTakeOff(aircraft, runway));
 	}
 
-	public void runwayClearedToTakeoff(String aircraft, String direction) {
-		runwayClearedToTakeoff(Airport.airport.getAircraft(aircraft), Direction.valueOf(direction));
+	public void runwayClearedToTakeoff(String aircraft, Location runway) {
+		runwayClearedToTakeoff(Airport.airport.aircrafts.get(Airport.airport.aircrafts.indexOf(aircraft)), Airport.getFreeRunway());
 	}
 
 	public void holdshort(Aircraft aircraft, Location location) {
@@ -43,7 +44,7 @@ public class Tower implements ITower{
 	}
 
 	public void holdshort(String aircraft, String location){
-	        holdshort(Airport.airport.getAircraft(aircraft), Airport.airport.getLocationmanager().getLocationByString(location));
+	        holdshort(aircraft, location);
 	}
 	
 	public boolean locationTaken(Location location) {
