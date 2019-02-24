@@ -1,23 +1,19 @@
 package Airport.Events;
 
+import Airport.Location;
+import Airport.Runway;
 import Airport.Airplane.Aircraft;
 
 public class EventTakeOff extends Events{
-	private Direction Direction;
+	private Runway runway;
 
-    public EventTakeOff(final Aircraft aircraft, Direction Direction)
+    public EventTakeOff(final Aircraft aircraft, Runway runway2)
     {
         super(aircraft);
-        this.Direction = Direction;
+        this.runway = runway2;
     }
 
-    public Direction getDirection() {
-        return Direction;
+    public Runway getDirection() {
+        return runway;
     }
-
-    @Override
-    public String toString() {
-        return Direction.name().toString();
-    }
-
 }

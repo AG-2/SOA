@@ -1,23 +1,18 @@
 package Airport.Events;
 
+import Airport.Runway;
 import Airport.Airplane.Aircraft;
 
 public class EventLand extends Events{
-	private final Direction direction;
+	private final Runway runway;
 
-    public EventLand(final Aircraft aircraft, Direction Direction)
+    public EventLand(final Aircraft aircraft, Runway runway)
     {
         super(aircraft);
-        this.direction = Direction;
+        this.runway = runway;
     }
 
-    public Direction getDirection() {
-        return direction;
+    public Runway getRunway() {
+        return runway;
     }
-
-    @Override
-    public String toString() {
-        return direction.name().toString();
-    }
-
 }

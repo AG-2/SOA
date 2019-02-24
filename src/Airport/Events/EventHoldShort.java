@@ -7,17 +7,12 @@ public class EventHoldShort extends Events{
 
 	private final Location location;
 	
-	public EventHoldShort(final Aircraft aircraft, final Airport.Airplane.Location location2) {
+	public EventHoldShort(final Aircraft aircraft, final Airport.Location location) {
 		super(aircraft);
-		this.location = location2;
+		this.location = (Location) location;
 	}
 	
 	public Location getLocation() {
 		return location;
-	}
-	
-	@Override
-	public String toString() {
-		return location.toString();
 	}
 }
