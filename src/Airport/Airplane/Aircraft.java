@@ -1,12 +1,14 @@
 package Airport.Airplane;
+import java.awt.Event;
 import java.util.ArrayList;
+
+import Airport.Location;
 import Airport.Tower;
 import Airport.Airplane.Names.AircraftName;
 import Airport.Events.EventHoldShort;
 import Airport.Events.EventLand;
 import Airport.Events.EventTakeOff;
 import Airport.Events.EventTaxi;
-import jdk.jfr.Event;
 
 
 public class Aircraft extends Subscriber{
@@ -26,12 +28,6 @@ public class Aircraft extends Subscriber{
 		this.id = id;
 		this.location = location;
 		build();
-	}
-
-	public int getId() {
-
-		return id;
-
 	}
 	
 	public void build() {
@@ -75,29 +71,29 @@ public class Aircraft extends Subscriber{
 		return location;
 	}
 	
-	@Subscribe
-	public void receive(EventTaxi eventTaxi) {
+	//@Subscribe
+	public void recieve(EventTaxi eventTaxi) {
 		//fehlt noch location
-		if(Tower.locationTaken()) {
+	/*	if(Tower.locationTaken()) {
 			movetolocation();
 		}else
 		{
 			System.out.println("Location taken");
-		}
+		}*/
 	}
 	
-	@Subscribe
-	public void receive(EventHoldShort eventHoldShort) {
+	//@Subscribe
+	public void recieve(EventHoldShort eventHoldShort) {
 		
 	}
 	
-	@Subscribe
-	public void receive(EventLand eventLand) {
+	//@Subscribe
+	public void recieve(EventLand eventLand) {
 		
 	}
 	
-	@Subscribe
-	public void receive(EventTakeOff eventTakeOff) {
+	//@Subscribe
+	public void recieve(EventTakeOff eventTakeOff) {
 		
 	}
 	
@@ -105,12 +101,11 @@ public class Aircraft extends Subscriber{
 		System.out.println("Aircraft " + id + " moved from " + this.location.toString() + " to " + location.toString());
 		this.location = location;
 	}
-
+	
 	private void writeEventLog(Event event, String s) {
 
 		writeEventLog(event, "");
 
 	}
-
 
 }

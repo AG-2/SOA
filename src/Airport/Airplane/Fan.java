@@ -2,7 +2,7 @@ package Airport.Airplane;
 
 import java.util.ArrayList;
 
-public class Fan implements Airport.Airplane.IFan {
+public class Fan implements IFan{
 	ArrayList<Blade> blades;
 	int rpm;
 	boolean isStarted = false;
